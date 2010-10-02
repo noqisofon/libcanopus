@@ -7,8 +7,9 @@
 namespace qwine {
 
 
-    class String;
+    class Collection;
     class OrederCollection;
+    class String;
 
 
     /**
@@ -16,7 +17,7 @@ namespace qwine {
      */
     class Stream : public Object 
     {
-    public:
+     public:
         /**
          * ストリームの内容を返します。
          */
@@ -33,7 +34,7 @@ namespace qwine {
          * "a stream" を返します。
          */
         virtual const String* localName() const;
-        
+
 
         /**
          * 現在カーソルが指しているオブジェクトを返し、カーソルを進めます。
@@ -71,10 +72,9 @@ namespace qwine {
          * collection の全ての要素をストリームに書き出します。
          */
         virtual void nextPutAll(const Collection* const& collection);
-        
-        
 
-    protected:
+
+     protected:
         /**
          * next() が呼び出します。
          */
@@ -85,7 +85,7 @@ namespace qwine {
          * nextPut() が呼び出します。
          */
         virtual void basicNextPut(int n, Object* const& replacement) = 0;
-        
+
     };
 
 

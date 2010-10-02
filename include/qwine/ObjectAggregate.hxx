@@ -1,10 +1,13 @@
 #ifndef qwine_ObjectAggregate_hxx
 #define qwine_ObjectAggregate_hxx
 
-#include <qwine/ObjectAggregate.hxx>
+#include <qwine/Object.hxx>
 
 
 namespace qwine  {
+
+
+    class String;
 
 
     /**
@@ -12,40 +15,40 @@ namespace qwine  {
      */
     class ObjectAggregate : public Object
     {
-    public:
+     public:
         /**
-         * 
+         *
          */
         ObjectAggregate();
         /**
-         * 
+         *
          */
         ObjectAggregate(String* const& name);
         /**
-         * 
+         *
          */
         ObjectAggregate(String* const& name, ObjectAggregate* const& parent);
 
 
         /**
-         * 
+         *
          */
         virtual ~ObjectAggregate();
 
-    public:
+     public:
         /**
-         * 
+         *
          */
         virtual String* const toString() const;
 
 
         /**
-         * 
+         *
          */
         virtual String* const className() const;
-        
+
     };
-    
+
 
 }
 

@@ -16,8 +16,12 @@ namespace qwine {
         /**
          * 
          */
-        Collection* Array::ofSize(size_t size);
-        
+        static Collection* ofSize(size_t size);
+
+     public:
+        /**
+         * 
+         */
     };
 
 

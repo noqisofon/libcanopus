@@ -38,4 +38,6 @@
 *.xml
 *.lastbuildstate
 *.unsuccessfulbuild
+*.ver
 *.version
+*.cmes

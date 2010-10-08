@@ -1,9 +1,11 @@
-#include <qwine/Object.hxx>
+﻿#include <stdafx.h>
 
-#include <qwine/String.hxx>
-#include <qwine/ObjectAggregate.hxx>
+#include <canopus/Object.hxx>
 
-using namesoace qwine;
+#include <canopus/String.hxx>
+#include <canopus/ObjectAggregate.hxx>
+
+using namespace canopus;
 
 
 Object::Object()
@@ -77,7 +79,7 @@ bool Object::is_identity(const Object& other) const
 
 int Object::hash() const
 {
-    return __STATIC_CAST( int, __REINTERPRET_CAST( void *, this ) );
+    return __STATIC_CAST( int, __REINTERPRET_CAST(void *, this) );
 }
 
 
@@ -95,7 +97,7 @@ void Object::finalize()
     if ( name_ != NULL )
         delete name_;
 
-    parent_->remove
+    parent_->removeChild( this );
 }
 
 

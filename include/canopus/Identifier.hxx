@@ -1,8 +1,8 @@
-#ifndef qwine_Identifier_hxx
-#define qwine_Identifier_hxx
+﻿#ifndef canopus_Identifier_hxx
+#define canopus_Identifier_hxx
 
 
-namespace qwine {
+namespace canopus {
 
 
     /**
@@ -10,41 +10,40 @@ namespace qwine {
      */
     class Identifier
     {
-    public:
+     public:
         /**
-         * 
+         *
          */
         Identifier();
         /**
-         * 
+         *
          */
         Identifier(const Identifier& other);
 
 
         /**
-         * 
+         *
          */
         virtual ~Identifier();
 
-    public:
+     public:
         /**
-         * 
+         *
          */
         virtual int object_id() const;
 
-    private:
+     private:
         /**
-         * 
+         *
          */
         int __id__() const;
 
-    private:
-        int      id_;
+     private:
+        int      object_id_;
     };
     
 
 };
 
 
-
-#endif  /* qwine_Identifier_hxx */
+#endif  /* canopus_Identifier_hxx */

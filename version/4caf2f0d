@@ -1,0 +1,3 @@
+* プロジェクト名を qwine から canopus に変更しました。
+
++ 文字エンコードを utf-8n lf から utf-8 crlf に変更しました。

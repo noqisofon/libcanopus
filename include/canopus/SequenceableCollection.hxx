@@ -1,14 +1,15 @@
-#ifndef qwine_SequenceableCollection_hxx
-#define qwine_SequenceableCollection_hxx
+﻿#ifndef canopus_SequenceableCollection_hxx
+#define canopus_SequenceableCollection_hxx
 
-#include <qwine/Collection.hxx>
+#include <canopus/Collection.hxx>
 
 
-namespace qwine {
+namespace canopus {
 
 
     class Array;
     class String;
+    class WriteStream;
     class ReadStream;
 
 
@@ -17,7 +18,7 @@ namespace qwine {
      */
     class SequenceableCollection : public Collection
     {
-    public:
+     public:
         /**
          * 指定されたオブジェクトの後の要素を返します。
          */
@@ -49,7 +50,7 @@ namespace qwine {
         virtual SequenceableCollection* const allButFirst() const {
             return allButFirst( 0 );
         }
-        
+
         /**
          * 0..n までの要素を除外したサブコレクションをコピーして返します。
          */
@@ -66,7 +67,7 @@ namespace qwine {
          * n..size-1 までの要素を除外したサブコレクションをコピーして返します。
          */
         virtual SequenceableCollection* const allButLast(int n) const;
-        
+
 
         /**
          * 最初の要素を返します。
@@ -80,7 +81,7 @@ namespace qwine {
         virtual Object* at(int index) const {
             return at( index, nil );
         }
-        
+
         /**
          * index 番目の要素を返します。要素がない場合は absent を返します。
          */
@@ -369,7 +370,7 @@ namespace qwine {
          * element をこのコレクションの末尾に追加した新しいコレクションを返します。
          */
         virtual Collection* const copyWith(Object* const& element) const;
-        
+
 
         /**
          * element をこのコレクションの先頭に追加した新しいコレクションを返します。
@@ -405,4 +406,4 @@ namespace qwine {
 }
 
 
-#endif  
+#endif  /* canopus_SequenceableCollection_hxx */

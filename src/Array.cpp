@@ -1,6 +1,10 @@
-#include <qwine/Array.hxx>
+﻿#include <stdafx.h>
 
-using namespace qwine;
+#include <canopus/Collection.hxx>
+#include <canopus/Stream.hxx>
+
+#include <canopus/Array.hxx>
+using namespace canopus;
 
 
 Collection* Array::ofSize(size_t size)
@@ -27,7 +31,7 @@ Collection* Array::with(Object* const& _0)
 }
 Collection* Array::with(Object* const& _0, Object* const& _1)
 {
-    Collection*   ret   = new Array();
+    Collection*   ret   = new Array( 2 );
 
     ret->put( 0, _0 );
     ret->put( 1, _1 );
@@ -36,7 +40,7 @@ Collection* Array::with(Object* const& _0, Object* const& _1)
 }
 Collection* Array::with(Object* const& _0, Object* const& _1, Object* const& _2)
 {
-    Collection*   ret   = new Array();
+    Collection*   ret   = new Array( 3 );
 
     ret->put( 0, _0 );
     ret->put( 1, _1 );
@@ -46,7 +50,7 @@ Collection* Array::with(Object* const& _0, Object* const& _1, Object* const& _2)
 }
 Collection* Array::with(Object* const& _0, Object* const& _1, Object* const& _2, Object* const& _3)
 {
-    Collection*   ret   = new Array();
+    Collection*   ret   = new Array( 4 );
 
     ret->put( 0, _0 );
     ret->put( 1, _1 );

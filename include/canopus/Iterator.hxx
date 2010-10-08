@@ -1,8 +1,8 @@
-#ifndef qwine_Iterator_hxx
-#define qwine_Iterator_hxx
+﻿#ifndef canopus_Iterator_hxx
+#define canopus_Iterator_hxx
 
 
-namespace qwine {
+namespace canopus {
 
 
     class Object;
@@ -13,7 +13,7 @@ namespace qwine {
      */
     class Iterator
     {
-    public:
+     public:
         /**
          * イテレータがコレクションの末尾にあるときに真を返します。
          */
@@ -36,4 +36,4 @@ namespace qwine {
 }
 
 
-#endif  /* qwine_Iterator_hxx */
+#endif  /* canopus_Iterator_hxx */

@@ -1,21 +1,21 @@
-#ifndef qwine_Stream_hxx
-#define qwine_Stream_hxx
+﻿#ifndef canopus_Stream_hxx
+#define canopus_Stream_hxx
 
-#include <qwine/Object.hxx>
+#include <canopus/Object.hxx>
 
 
-namespace qwine {
+namespace canopus {
 
 
     class Collection;
-    class OrederCollection;
+    class OrederedCollection;
     class String;
 
 
     /**
      * 
      */
-    class Stream : public Object 
+    class Stream : public Object
     {
      public:
         /**
@@ -84,12 +84,15 @@ namespace qwine {
         /**
          * nextPut() が呼び出します。
          */
+        virtual void basicNextPut(Object* const& replacement) = 0;
+        /**
+         * nextPut() が呼び出します。
+         */
         virtual void basicNextPut(int n, Object* const& replacement) = 0;
-
     };
 
 
 }
 
 
-#endif  /* qwine_Stream_hxx */
+#endif  /* canopus_Stream_hxx */

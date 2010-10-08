@@ -1,10 +1,10 @@
-#ifndef qwine_ObjectAggregate_hxx
-#define qwine_ObjectAggregate_hxx
+﻿#ifndef canopus_ObjectAggregate_hxx
+#define canopus_ObjectAggregate_hxx
 
-#include <qwine/Object.hxx>
+#include <canopus/Object.hxx>
 
 
-namespace qwine  {
+namespace canopus  {
 
 
     class String;
@@ -46,12 +46,10 @@ namespace qwine  {
          *
          */
         virtual String* const className() const;
-
     };
 
 
 }
 
 
-
-#endif  /* qwine_ObjectAggregate_hxx */
+#endif  /* canopus_ObjectAggregate_hxx */

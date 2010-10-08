@@ -1,13 +1,15 @@
-#ifndef qwine_Collection_hxx
-#define qwine_Collection_hxx
+﻿#ifndef canopus_Collection_hxx
+#define canopus_Collection_hxx
 
-#include <qwine/Object.hxx>
+#include <canopus/Object.hxx>
 
 
-namespace qwine {
+namespace canopus {
 
 
     class Iterator;
+    class Stream;
+    class Array;
 
 
     /**
@@ -15,7 +17,7 @@ namespace qwine {
      */
     class Collection : public Object
     {
-    public:
+     public:
         /**
          * 先頭に格納されている要素を返します。
          */
@@ -28,7 +30,7 @@ namespace qwine {
         virtual size_t capacity() const {
             return size();
         }
-        
+
 
         /**
          * 格納されている要素の数を求めます。
@@ -44,7 +46,7 @@ namespace qwine {
          * 指定されたオブジェクトを occurences 回追加します。
          */
         virtual bool add(Object* const& item, int occurences);
-        
+
 
         /**
          * 指定されたコレクションの要素を全てこのコレクションに追加します。
@@ -61,7 +63,7 @@ namespace qwine {
 
 
         /**
-         * 
+         *
          */
         virtual Iterator* const iterator() const = 0;
 
@@ -164,7 +166,7 @@ namespace qwine {
          * 格納している要素がない場合、真を返します。
          */
         virtual bool is_empty() const { return size() == 0; }
-        
+
 
         /**
          * Collection では is_empty() と同じです。
@@ -175,7 +177,7 @@ namespace qwine {
         /**
          * 順序集合である場合、真を返します。
          */
-        virtual bool is_sequenceable() connst { return false; }
+        virtual bool is_sequenceable() const { return false; }
 
 
         /**
@@ -195,7 +197,7 @@ namespace qwine {
          */
         virtual Array* asArray() const = 0;
 
-    protected:
+     protected:
         /**
          * size 個の要素を持つ新しいコレクションを作成し、それを返します。
          */
@@ -212,6 +214,4 @@ namespace qwine {
 }
 
 
-
-#endif  /* qwine_Collection_hxx */
-
+#endif  /* canopus_Collection_hxx */

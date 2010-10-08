@@ -1,8 +1,10 @@
-#include <qwine/Object.hxx>
-#include <qwine/Iterator.hxx>
+﻿#include <stdafx.h>
 
-#include <qwine/Collection.hxx>
-using namespace qwine;
+#include <canopus/Object.hxx>
+#include <canopus/Iterator.hxx>
+
+#include <canopus/Collection.hxx>
+using namespace canopus;
 
 
 bool Collection::add(Object* const& item, int occurences)

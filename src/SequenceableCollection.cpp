@@ -1,6 +1,8 @@
-#include <qwine/SequenceableCollection.hxx>
+﻿#include <stdafx.h>
 
-using namespace qwine;
+#include <canopus/SequenceableCollection.hxx>
+
+using namespace canopus;
 
 
 Object* const SequenceableCollection::after(const Object* const& that, Object* const& absent) const
@@ -301,6 +303,7 @@ Array* SequenceableCollection::asArray() const
 {
     Array*    ret = new Array( size() );
     Iterator* it;
+
     int       i   = 0;
 
     for ( it = iterator(); it->finished(); it->next() ) {
@@ -412,4 +415,3 @@ bool SequenceableCollection::endsWith(const SequenceableCollection* const& other
     }
     return c == other_len;
 }
-

@@ -1,15 +1,17 @@
-#include <qwine/Identifier.hxx>
+﻿#include <stdafx.h>
 
+#include <canopus/Identifier.hxx>
+using namespace canopus;
 
 int ObjectID   = 0;
 
 
 Identifier::Identifier()
-    : id_(ObjectID ++)
+    : object_id_(ObjectID ++)
 {
 }
 Identifier::Identifier(const Identifier& other)
-    : id_(ObjectID ++)
+    : object_id_(ObjectID ++)
 {
 }
 
@@ -22,5 +24,5 @@ int Identifier::object_id() const
 
 int Identifier::__id__() const
 {
-    return id_;
+    return object_id_;
 }

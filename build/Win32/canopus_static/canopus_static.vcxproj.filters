@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{382c875a-2817-4da0-944b-36ddb9ae79a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch\include">
+      <UniqueIdentifier>{9dc9a821-030d-4aae-b9c1-5302c3059843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch\src">
+      <UniqueIdentifier>{83e0b8f7-2d82-4dc0-a9da-5c43ae48cbab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\canopus">
+      <UniqueIdentifier>{86c47914-4d2c-4811-a6ae-a73b60246e86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>pch\include</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>pch\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Array.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\ArrayedCollection.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Collection.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\ErrorHandler.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Identifier.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Iterator.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Object.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\ObjectAggregate.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\SequenceableCollection.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Stream.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>pch\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Array.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Collection.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Identifier.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Object.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SequenceableCollection.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Stream.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

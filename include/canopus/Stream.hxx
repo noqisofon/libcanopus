@@ -13,7 +13,7 @@ namespace canopus {
 
 
     /**
-     * 
+     * オブジェクトのシーケンスにアクセスするための抽象クラスです。
      */
     class Stream : public Object
     {
@@ -72,6 +72,18 @@ namespace canopus {
          * collection の全ての要素をストリームに書き出します。
          */
         virtual void nextPutAll(const Collection* const& collection);
+
+
+        /**
+         * レシーバを返します。
+         */
+        virtual const Stream* openReadOnly() const { return this; }
+
+
+        /**
+         * stream にレシーバの内容を返します。
+         */
+        virtual void printOn(Stream* const& stream) const;
 
 
      protected:

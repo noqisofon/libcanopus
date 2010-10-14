@@ -77,6 +77,10 @@ namespace canopus {
          *
          */
         virtual bool is_identity(const Object* const& other) const;
+        /**
+         *
+         */
+        virtual bool is_identity(const Object& other) const;
 
 
         /**
@@ -137,9 +141,8 @@ namespace canopus {
          *
          */
         virtual void raise( const char* const&  message,
-                            const char* const&  filename,
-                            int                 line_number,
-                            const char* const&  function_name
+                            const char* const&  selector,
+                            Object* const&      parameter
                             );
 
      private:

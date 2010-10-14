@@ -81,7 +81,6 @@ namespace canopus {
         virtual Object* at(int index) const {
             return at( index, nil );
         }
-
         /**
          * index 番目の要素を返します。要素がない場合は absent を返します。
          */

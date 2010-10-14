@@ -66,6 +66,18 @@
     <ClInclude Include="..\..\..\include\canopus\Stream.hxx">
       <Filter>ヘッダー ファイル\canopus</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Releaseable.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Disposeable.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Equalable.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Comparable.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

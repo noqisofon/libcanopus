@@ -7,6 +7,12 @@
 using namespace canopus;
 
 
+const String* Stream::localName() const
+{
+    return new String( "a stream" );
+}
+
+
 void Stream::nextPutAll(const Collection* const& collection)
 {
     Iterator*   it;

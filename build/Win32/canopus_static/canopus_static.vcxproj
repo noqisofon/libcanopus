@@ -86,11 +86,15 @@
     <ClInclude Include="..\..\..\include\canopus\Array.hxx" />
     <ClInclude Include="..\..\..\include\canopus\ArrayedCollection.hxx" />
     <ClInclude Include="..\..\..\include\canopus\Collection.hxx" />
+    <ClInclude Include="..\..\..\include\canopus\Comparable.hxx" />
+    <ClInclude Include="..\..\..\include\canopus\Disposeable.hxx" />
+    <ClInclude Include="..\..\..\include\canopus\Equalable.hxx" />
     <ClInclude Include="..\..\..\include\canopus\ErrorHandler.hxx" />
     <ClInclude Include="..\..\..\include\canopus\Identifier.hxx" />
     <ClInclude Include="..\..\..\include\canopus\Iterator.hxx" />
     <ClInclude Include="..\..\..\include\canopus\Object.hxx" />
     <ClInclude Include="..\..\..\include\canopus\ObjectAggregate.hxx" />
+    <ClInclude Include="..\..\..\include\canopus\Releaseable.hxx" />
     <ClInclude Include="..\..\..\include\canopus\SequenceableCollection.hxx" />
     <ClInclude Include="..\..\..\include\canopus\Stream.hxx" />
     <ClInclude Include="stdafx.h" />

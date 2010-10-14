@@ -1,9 +1,11 @@
 ﻿#include <stdafx.h>
 
-#include <canopus/Object.hxx>
+#include <stddef.h>
 
 #include <canopus/String.hxx>
 #include <canopus/ObjectAggregate.hxx>
+
+#include <canopus/Object.hxx>
 
 using namespace canopus;
 
@@ -43,7 +45,7 @@ String* const Object::className() const
 }
 
 
-String* const Object::getName() const
+const String* const Object::getName() const
 {
     return name_;
 }

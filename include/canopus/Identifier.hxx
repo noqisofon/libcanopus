@@ -32,6 +32,18 @@ namespace canopus {
          */
         virtual int object_id() const;
 
+
+        /**
+         *
+         */
+        virtual bool is_identity(const Identifier* const& other) const;
+        /**
+         *
+         */
+        virtual bool is_identity(const Identifier& other) const {
+            return is_identity( &other );
+        }
+
      private:
         /**
          *

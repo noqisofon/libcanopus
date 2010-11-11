@@ -78,6 +78,15 @@
     <ClInclude Include="..\..\..\include\canopus\Comparable.hxx">
       <Filter>ヘッダー ファイル\canopus</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\nil.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\Cloneable.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\canopus\ObjectProtocol.hxx">
+      <Filter>ヘッダー ファイル\canopus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

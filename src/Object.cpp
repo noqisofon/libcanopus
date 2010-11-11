@@ -81,7 +81,7 @@ bool Object::is_identity(const Object& other) const
 
 int Object::hash() const
 {
-    return __STATIC_CAST( int, __REINTERPRET_CAST(void *, this) );
+    return __STATIC_CAST(int, __REINTERPRET_CAST(void *, this));
 }
 
 

@@ -85,13 +85,13 @@ namespace canopus {
 
 
         /**
-         * stream に Ruby 形式で要素を出力します。
+         * stream に #() 形式で要素を出力します。
          */
         virtual void printOn(Stream* const& stream) const;
 
 
         /**
-         * stream に Ruby 形式で要素を詳しく出力します。
+         * stream に #() 形式で要素を詳しく出力します。
          */
         virtual void storeOn(Stream* const& stream) const;
 
@@ -142,6 +142,12 @@ namespace canopus {
          * stream の内容で初期化した内部配列を作成します。
          */
         virtual void assign_from_stream(const Stream* const stream);
+
+
+        /**
+         * 内部配列を開放します。
+         */
+        virtual size_t terminate_inner_buffer();
 
      private:
         Object**    content_;

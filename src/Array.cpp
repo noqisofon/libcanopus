@@ -62,7 +62,7 @@ Array* Array::with(Object* const& _0, Object* const& _1, Object* const& _2, Obje
 
 
 Array::Array(size_t request_size)
-     : base(request_size), capacity_(request_size), content_(NULL)
+     : base(request_size, nil), capacity_(request_size), content_(NULL)
 {
     
 }
@@ -100,16 +100,37 @@ bool Array::isLiteral() const
 
 void Array::printOn(Stream* const& stream) const
 {
+    size_t  len;
+
+    len = size();
+    stream->nextPutAll( "#(" );
+    for ( size_t i = 0; i < len; ++ i ) {
+        at( i )->printOn( stream );
+        if ( i < len - 1 )
+            stream->nextPut( ' ' );
+    }
+    stream->nextPutAll( ")" );
 }
 
 
 void Array::storeOn(Stream* const& stream) const
 {
+    size_t  len;
+
+    len = size();
+    stream->nextPutAll( "#(" );
+    for ( size_t i = 0; i < len; ++ i ) {
+        at( i )->printOn( stream );
+        if ( i < len - 1 )
+            stream->nextPut( ' ' );
+    }
+    stream->nextPutAll( ")" );
 }
 
 
 void Array::byteEncode(Stream* const& stream) const
 {
+    writeOn( stream );
 }
 
 
@@ -142,7 +163,8 @@ void Array::assign_empty()
 
 void Array::assign(size_t request_size, Object* const& value)
 {
-    Object**         last;
+    size_t          len;
+    Object**        last;
 
     tally_      = request_size;
     content_    = new Object*[tally_];
@@ -174,5 +196,10 @@ void Array::assign_from(const Collection* const& collection)
 
 
 void Array::assign_from_stream(const Stream* const stream)
+{
+}
+
+
+size_t Array::terminate_inner_buffer()
 {
 }

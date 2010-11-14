@@ -45,12 +45,6 @@
     <ClInclude Include="..\..\..\include\canopus\Collection.hxx">
       <Filter>ヘッダー ファイル\canopus</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\canopus\ErrorHandler.hxx">
-      <Filter>ヘッダー ファイル\canopus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\canopus\Identifier.hxx">
-      <Filter>ヘッダー ファイル\canopus</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\canopus\Iterator.hxx">
       <Filter>ヘッダー ファイル\canopus</Filter>
     </ClInclude>
@@ -64,18 +58,6 @@
       <Filter>ヘッダー ファイル\canopus</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\canopus\Stream.hxx">
-      <Filter>ヘッダー ファイル\canopus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\canopus\Releaseable.hxx">
-      <Filter>ヘッダー ファイル\canopus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\canopus\Disposeable.hxx">
-      <Filter>ヘッダー ファイル\canopus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\canopus\Equalable.hxx">
-      <Filter>ヘッダー ファイル\canopus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\canopus\Comparable.hxx">
       <Filter>ヘッダー ファイル\canopus</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\canopus\nil.hxx">
@@ -96,9 +78,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Collection.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Identifier.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Object.cpp">

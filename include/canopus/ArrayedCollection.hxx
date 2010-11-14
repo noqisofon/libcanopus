@@ -17,6 +17,30 @@ namespace canopus {
     {
      public:
         /**
+         * サイズ 0 のインスタンスを作成します。
+         */
+        ArrayedCollection();
+        /**
+         * 指定されたサイズでインスタンスを作成し、全要素を value で埋めます。
+         */
+        ArrayedCollection(size_t size, Object* const& value);
+        /**
+         * 
+         */
+        ArrayedCollection(const Collection* const& collection);
+        /**
+         * 
+         */
+        ArrayedCollection(Stream* const& stream);
+
+
+        /**
+         * 
+         */
+        virtual ~ArrayedCollection();
+
+     public:
+        /**
          * 要素数を返します。
          */
         virtual size_t size() const { return tally_; }
@@ -59,7 +83,7 @@ namespace canopus {
 
 
         /**
-         * stream にレシーバの内容を書き出します。
+         * stream にレシーバの内容をバイナリで書き出します。
          */
         virtual void writeOn(Stream* const& stream) const;
 
@@ -86,6 +110,12 @@ namespace canopus {
          * stream の内容で初期化した内部配列を作成します。
          */
         virtual void assign_from_stream(const Stream* const stream) = 0;
+
+
+        /**
+         * 内部配列を開放します。
+         */
+        virtual size_t terminate_inner_buffer() = 0;
 
      protected:
         size_t      tally_;

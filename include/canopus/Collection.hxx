@@ -10,6 +10,8 @@ namespace canopus {
     class Iterator;
     class Stream;
     class Array;
+    class OrderedCollection;
+    class Set;
 
 
     /**
@@ -65,7 +67,7 @@ namespace canopus {
         /**
          *
          */
-        virtual Iterator* const iterator() const = 0;
+        virtual Iterator* const iterator() const;
 
 
         /**
@@ -159,31 +161,31 @@ namespace canopus {
         /**
          * Collection か、そのサブクラスなら真を返します。
          */
-        virtual bool is_Collection() const { return true; }
+        virtual bool isCollection() const { return true; }
 
 
         /**
          * 格納している要素がない場合、真を返します。
          */
-        virtual bool is_empty() const { return size() == 0; }
+        virtual bool isEmpty() const { return size() == 0; }
 
 
         /**
-         * Collection では is_empty() と同じです。
+         * Collection では isEmpty() と同じです。
          */
-        virtual bool is_emptyOrNil() const { return is_empty(); }
+        virtual bool isEmptyOrNil() const { return isEmpty(); }
 
 
         /**
          * 順序集合である場合、真を返します。
          */
-        virtual bool is_sequenceable() const { return false; }
+        virtual bool isSequenceable() const { return false; }
 
 
         /**
          * 格納している要素がある場合、真を返します。
          */
-        virtual bool not_empty() const { return !is_empty(); }
+        virtual bool notEmpty() const { return !isEmpty(); }
 
 
         /**
@@ -193,21 +195,42 @@ namespace canopus {
 
 
         /**
-         * Array オブジェクトに変換して返します。
+         * Array に変換して返します。
+         *      @return Array オブジェクト。
          */
-        virtual Array* asArray() const = 0;
+        virtual Array* const asArray();
+
+
+        /**
+         * OrderedCollection に変換して返します。
+         *      @return OrderedCollection オブジェクト。
+         */
+        virtual OrderedCollection* const asOrderedCollection();
+
+
+        /**
+         * Set に変換して返します。
+         *      @return Set オブジェクト。
+         */
+        virtual Set* const asSet();
 
      protected:
         /**
-         * size 個の要素を持つ新しいコレクションを作成し、それを返します。
+         *
          */
-        virtual Collection* const inner_of_size(size_t size) const = 0;
+        virtual Object* const nextForIterator(CollectionIterator* it) const = 0;
 
 
         /**
-         * collection の要素で初期化した新しいコレクションを作成します。
+         * 空かどうか調べます。
          */
-        virtual Collection* const inner_with_all(const Collection* const& collection) const = 0;
+        virtual void emptyCheck();
+
+
+        /**
+         *
+         */
+        virtual int growSize();
     };
 
 

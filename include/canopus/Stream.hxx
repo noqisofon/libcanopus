@@ -1,4 +1,4 @@
-﻿#ifndef canopus_Stream_hxx
+#ifndef canopus_Stream_hxx
 #define canopus_Stream_hxx
 
 #include <canopus/Object.hxx>
@@ -9,6 +9,7 @@ namespace canopus {
 
     class Collection;
     class OrederedCollection;
+    class SequenceableCollection;
     class String;
 
 
@@ -51,7 +52,7 @@ namespace canopus {
         /**
          * このストリームの内容が collection と一致するなら真を返します。
          */
-        virtual bool nextMatchAll(const Collection* const& collection) const = 0;
+        virtual bool nextMatchAll(const SequenceableCollection* const& collection) const = 0;
 
 
         /**
@@ -69,9 +70,13 @@ namespace canopus {
 
 
         /**
-         * collection の全ての要素をストリームに書き出します。
+         * 指定されたコレクションの全ての要素をストリームに書き出します。
          */
-        virtual void nextPutAll(const Collection* const& collection);
+        virtual void nextPutAll(const SequenceableCollection* const& collection);
+        /**
+         * 指定されたコレクションの start_index 番目からの要素をストリームに書き出します。
+         */
+        virtual void nextPutAll(const SequenceableCollection* const& collection, int start_index);
 
 
         /**

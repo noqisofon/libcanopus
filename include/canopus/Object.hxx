@@ -6,7 +6,7 @@ namespace canopus {
 
 
     class String;
-    class ObjectAggregate;
+    class Stream;
 
 
     /**
@@ -22,15 +22,7 @@ namespace canopus {
         /**
          *
          */
-        explicit Object(ObjectAggregate* const& parent);
-        /**
-         *
-         */
         Object(const Object& other);
-        /**
-         *
-         */
-        Object(const String& name, ObjectAggregate* const& parent);
 
 
         /**
@@ -42,25 +34,7 @@ namespace canopus {
         /**
          *
          */
-        virtual String* const toString() const;
-
-
-        /**
-         *
-         */
         virtual String* const className() const;
-
-
-        /**
-         *
-         */
-        virtual const String* const getName() const;
-
-
-        /**
-         *
-         */
-        virtual void getName(const String& newname);
 
 
         /**
@@ -76,11 +50,25 @@ namespace canopus {
         /**
          *
          */
-        virtual bool is_identity(const Object* const& other) const;
+        virtual bool isIdentity(const Object* const& other) const;
         /**
          *
          */
-        virtual bool is_identity(const Object& other) const;
+        virtual bool isIdentity(const Object& other) const;
+     
+     
+        /**
+         * 指定されたストリームにこのオブジェクトを書き込みます。
+         *      @param  __stream 指定したストリーム。
+         */
+        virtual void printOn(Stream* const& stream) const;
+
+
+        /**
+         * このオブジェクトの文字列表現を返します。
+         *      @return このオブジェクトの文字列表現。
+         */
+        virtual String* const printString() const;
 
 
         /**
@@ -92,25 +80,60 @@ namespace canopus {
         /**
          * レシーバが nil かどうか調べます。常に false を返します。
          */
-        virtual bool is_nil() const { return false; }
+        virtual bool isNil() const { return false; }
 
 
         /**
          * Collection か、そのサブクラスなら真を返します。
          */
-        virtual bool is_Collection() const { return false; }
+        virtual bool isCollection() const { return false; }
 
 
         /**
-         *
+         * このオブジェクトが Association のインスタンスかどうか判別します。
+         *      @return Association のインスタンスなら真。
          */
-        virtual void setParent(ObjectAggregate* const& newparent);
+        virtual bool isAssociation() const { return false; }
 
 
         /**
-         *
+         * このオブジェクトが Boolean のインスタンスかどうか判別します。
+         *      @return Boolean のインスタンスなら真。
          */
-        virtual ObjectAggregate* const& parent() const;
+        virtual bool isBoolean() const { return false; }
+
+
+        /**
+         * このオブジェクトが Character のインスタンスかどうか判別します。
+         *      @return Character のインスタンスなら真。
+         */
+        virtual bool isCharacter() const { return false; }
+
+
+        /**
+         * このオブジェクトが Number のインスタンスかどうか判別します。
+         *      @return Number のインスタンスなら真。
+         */
+        virtual bool isNumber() const { return false; }
+
+
+        /**
+         * このオブジェクトが String のインスタンスかどうか判別します。
+         *      @return String のインスタンスなら真。
+         */
+        virtual bool isString() const { return false; }
+
+
+        /**
+         * 
+         */
+        virtual bool isStream() const { return false; }
+
+
+        /**
+         * リテラルのラッパーなら真を返します。
+         */
+        virtual bool isLiteral() const { return false; }
 
      protected:
         /**
@@ -128,26 +151,17 @@ namespace canopus {
         /**
          *
          */
-        virtual void fastenParent(ObjectAggregate* const& newparent);
-
-
-        /**
-         *
-         */
-        virtual void unfastenParent();
-
-
-        /**
-         *
-         */
         virtual void raise( const char* const&  message,
                             const char* const&  selector,
                             Object* const&      parameter
                             );
-
-     private:
-        Object* parent_;
-        String* name_;
+        /**
+         *
+         */
+        virtual void raise( const String* const&  message,
+                            const String* const&  selector,
+                            Object* const&      parameter
+                            );
     };
 
 

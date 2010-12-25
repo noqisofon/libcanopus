@@ -10,9 +10,13 @@
 *.sdf
 *.cdf
 *.cache
+*.ncb
 *.obj
 *.ilk
+*.htm
+*.html
 *.resources
+*.user
 *.tlb
 *.tli
 *.tlh

@@ -113,6 +113,14 @@ namespace canopus {
 
 
         /**
+         * 
+         */
+        void set_size(size_t new_size) {
+            tally_ = new_size;
+        }
+
+
+        /**
          * 内部配列を開放します。
          */
         virtual size_t terminate_inner_buffer() = 0;

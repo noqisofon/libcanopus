@@ -11,19 +11,9 @@ using namespace canopus;
 
 
 Object::Object()
-    : parent_(NULL), name_(NULL)
-{
-}
-Object::Object(ObjectAggregate* const& parent)
-    : parent_(parent), name_(NULL)
 {
 }
 Object::Object(const Object& other)
-    : parent_(other.parent_), name_(other.name_)
-{
-}
-Object::Object(const String& name, ObjectAggregate* const& parent)
-    : parent_(parent), name_(name)
 {
 }
 
@@ -34,34 +24,15 @@ Object::~Object()
 }
 
 
-String* const Object::toString() const
-{
-}
-
-
 String* const Object::className() const
 {
     return new String( "Object" );
 }
 
 
-const String* const Object::getName() const
-{
-    return name_;
-}
-
-
-void Object::setName(String* const& newname)
-{
-    name_->release();
-    name_ = newname;
-    name_->add_ref();
-}
-
-
 bool Object::equals(const Object* const& other) const
 {
-    return is_identity( other );
+    return isIdentity( other );
 }
 bool Object::equals(const Object& other) const
 {
@@ -69,28 +40,41 @@ bool Object::equals(const Object& other) const
 }
 
 
-bool Object::is_identity(const Object* const& other) const
+bool Object::isIdentity(const Object* const& other) const
 {
     return this == other;
 }
-bool Object::is_identity(const Object& other) const
+bool Object::isIdentity(const Object& other) const
 {
-    return is_identity( &other );
+    return isIdentity( &other );
+}
+
+
+void Object::printOn(Stream* const& stream) const
+{
+    String*  title   = className();
+
+    if ( __DYNAMIC_CAST( Character *, title->first() )->is_vowel() )
+        stream->nextPutAll( "an " );
+    else
+        stream->nextPutAll( "a " );
+
+    stream->nextPutAll( title );
+}
+
+
+String* const Object::printString() const
+{
+    WriteStream    stream( new String( 16 ) );
+    printOn( stream );
+
+    return __DYNAMIC_CAST( String *, stream.contents() );
 }
 
 
 int Object::hash() const
 {
     return __STATIC_CAST(int, __REINTERPRET_CAST(void *, this));
-}
-
-
-void Object::setParent(ObjectAggregate* const& newparent)
-{
-    if ( parent_ != NULL )
-        unfastenParent();
-
-    fastenParent( newparent );
 }
 
 
@@ -105,21 +89,5 @@ void Object::finalize()
 
 Object* const Object::clone() const
 {
-    return new Object( this );
-}
-
-
-void Object::fastenParent(ObjectAggregate* const& newparent)
-{
-    parent_ = newparent;
-}
-
-
-void const Object::unfastenParent()
-{
-    if ( parent_ == NULL )
-        return ;
-
-    parent_->removeChild( this );
-    parent_->release();
+    return new Object( *this );
 }

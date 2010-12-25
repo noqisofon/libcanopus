@@ -61,7 +61,7 @@ namespace canopus {
          * 最後の要素を除外したサブコレクションをコピーして返します。
          */
         virtual SequenceableCollection* const allButLast() const {
-            return allButlast( 0 );
+            return allButLast( 0 );
         }
         /**
          * n..size-1 までの要素を除外したサブコレクションをコピーして返します。
@@ -72,7 +72,7 @@ namespace canopus {
         /**
          * 最初の要素を返します。
          */
-        virtual Object* anyOne() const;
+        virtual const Object* const anyOne() const;
 
 
         /**
@@ -84,7 +84,7 @@ namespace canopus {
         /**
          * index 番目の要素を返します。要素がない場合は absent を返します。
          */
-        virtual Object* at(int index, Object* const& absent) const = 0;
+        virtual Object* const at(int index, Object* const& absent) const = 0;
 
 
         /**
@@ -109,7 +109,7 @@ namespace canopus {
          * index 番目の要素を返します。 index が要素範囲を超えるときは
          * wrap around されます。
          */
-        virtual Object* atWrap(int index) const {
+        virtual Object* const atWrap(int index) const {
             return at( index % size() );
         }
 
@@ -159,12 +159,7 @@ namespace canopus {
          */
         virtual int identityIndexOf(const Object* const& element) const {
             return identityIndexOf( element, -1 );
-        }
-        /**
-         * このコレクションに element と同一の要素が含まれていればそのインデック
-         * スを返します。なければ absent を返します。
-         */
-        virtual int identityIndexOf(const Object* const& element, int absent) const = 0;
+        };
 
 
         /**
@@ -298,7 +293,7 @@ namespace canopus {
         /**
          * 順序集合である場合、真を返します。
          */
-        virtual bool is_sequenceable() const { return true; }
+        virtual bool isSequenceable() const { return true; }
 
 
         /**

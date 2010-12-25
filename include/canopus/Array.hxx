@@ -23,25 +23,25 @@ namespace canopus {
         /**
          *
          */
-        static Collection* ofSize(size_t size);
+        static Array* ofSize(size_t size);
 
 
         /**
          *
          */
-        static Collection* with(Object* const& _0);
+        static Array* with(Object* const& _0);
         /**
          *
          */
-        static Collection* with(Object* const& _0, Object* const& _1);
+        static Array* with(Object* const& _0, Object* const& _1);
         /**
          *
          */
-        static Collection* with(Object* const& _0, Object* const& _1, Object* const& _2);
+        static Array* with(Object* const& _0, Object* const& _1, Object* const& _2);
         /**
          *
          */
-        static Collection* with(Object* const& _0, Object* const& _1, Object* const& _2, Object* const& _3);
+        static Array* with(Object* const& _0, Object* const& _1, Object* const& _2, Object* const& _3);
 
      public:
         /**
@@ -53,17 +53,17 @@ namespace canopus {
          */
         Array(const Array& other);
 
+
+        /**
+         * 
+         */
+        virtual ~Array();
+
      public:
         /**
          *
          */
         virtual String* const className() const;
-
-
-        /**
-         * 
-         */
-        virtual String* const toString() const;
 
 
         /**
@@ -75,7 +75,7 @@ namespace canopus {
         /**
          * レシーバを返します。
          */
-        virtual Array* const asArray() const;
+        virtual Array* asArray() const;
 
 
         /**
@@ -105,7 +105,7 @@ namespace canopus {
         /**
          * index 番目の要素を返します。要素がない場合は absent を返します。
          */
-        virtual Object* at(int index, Object* const& absent) const;
+        virtual Object* const at(int index, Object* const& absent) const;
 
 
         /**

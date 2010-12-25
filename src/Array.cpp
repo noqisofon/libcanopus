@@ -9,10 +9,11 @@ using namespace canopus;
 
 Array* Array::ofSize(size_t size)
 {
+    Array* ret;
+
     if ( size == 0 )
         size   = 1;
-
-    Array* ret   = new Array( size );
+    ret   = new Array( size );
 
     for ( size_t i = 0; i < size; ++ i ) {
         ret->put( i, nil );
@@ -62,12 +63,18 @@ Array* Array::with(Object* const& _0, Object* const& _1, Object* const& _2, Obje
 
 
 Array::Array(size_t request_size)
-     : base(request_size, nil), capacity_(request_size), content_(NULL)
+     : base(request_size, nil), content_(NULL)
 {
-    
 }
 Array::Array(const Array& other)
+     : base(&other), content_(NULL)
 {
+}
+
+
+Array::~Array()
+{
+    terminate_inner_buffer();
 }
 
 
@@ -77,13 +84,21 @@ String* const Array::className() const
 }
 
 
-String* const Array::toString() const
-{
-}
-
-
 bool Array::literalEqual(const Array* const& other) const
 {
+    size_t len;
+
+    if ( !other )
+        return false;
+    len = size();
+    if ( len != other->size() )
+        return false;
+
+    for ( size_t i = 0; i < len; ++ i ) {
+        if ( !at( i )->equals( other->at( i ) ) )
+            return false;
+    }
+    return true;
 }
 
 
@@ -95,6 +110,18 @@ Array* const Array::asArray() const
 
 bool Array::isLiteral() const
 {
+    Iterator*   it;
+    size_t      n, len;
+
+    len = size();
+
+    for ( it = iterator(); it->finished(); it->next() ) {
+        if ( it->current()->isLiteral() )
+            ++ n;
+    }
+    delete it;
+
+    return n == len;
 }
 
 
@@ -106,6 +133,7 @@ void Array::printOn(Stream* const& stream) const
     stream->nextPutAll( "#(" );
     for ( size_t i = 0; i < len; ++ i ) {
         at( i )->printOn( stream );
+
         if ( i < len - 1 )
             stream->nextPut( ' ' );
     }
@@ -121,6 +149,7 @@ void Array::storeOn(Stream* const& stream) const
     stream->nextPutAll( "#(" );
     for ( size_t i = 0; i < len; ++ i ) {
         at( i )->printOn( stream );
+
         if ( i < len - 1 )
             stream->nextPut( ' ' );
     }
@@ -134,7 +163,7 @@ void Array::byteEncode(Stream* const& stream) const
 }
 
 
-Object* Array::at(int index, Object* const& absent) const
+Object* const Array::at(int index, Object* const& absent) const
 {
     if ( index < 0 || index >= tally_ )
         return absent;
@@ -166,9 +195,10 @@ void Array::assign(size_t request_size, Object* const& value)
     size_t          len;
     Object**        last;
 
-    tally_      = request_size;
-    content_    = new Object*[tally_];
+    set_size( request_size );
 
+    len         = size();
+    content_    = new Object*[len];
     last        = content_ + tally_;
 
     for ( Object** it = content_; it != last; ++ it ) {
@@ -185,8 +215,9 @@ void Array::assign_from(const Collection* const& collection)
     if ( collect == NULL )
         return ;
 
-    tally_      = collection->size();
-    content_    = new Object*[tally_];
+    set_size( collection->size() );
+
+    content_    = new Object*[size()];
 
     for ( it = collection->iterator(), p = content_; it->finished(); it->next() ) {
         *p  = it->current();
@@ -202,4 +233,7 @@ void Array::assign_from_stream(const Stream* const stream)
 
 size_t Array::terminate_inner_buffer()
 {
+    delete [] content_;
+
+    return size();
 }

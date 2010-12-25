@@ -9,14 +9,12 @@ Object* const SequenceableCollection::after(const Object* const& that, Object* c
 {
     int index;
 
-    if ( that == nil )
-        RAISE_ARGUMENTS_ERROR( that );
-
     index = indexOf( that );
-    if ( index == -1 )
-        RAISE_NOT_FOUND_ERROR( that );
+    //if ( index == -1 )
+    //    RAISE_NOT_FOUND_ERROR( that );
 
-    if ( index + 1 >= size() - 1 )
+    //if ( index + 1 >= size() - 1 )
+    if ( index == -1 )
         return absent;
     else
         return at( index + 1 );
@@ -27,14 +25,12 @@ Object* const SequenceableCollection::before(const Object* const& that, Object* 
 {
     int index;
 
-    if ( that == nil )
-        RAISE_ARGUMENTS_ERROR( that );
-
     index = indexOf( that );
-    if ( index == -1 )
-        RAISE_NOT_FOUND_ERROR( that );
+    //if ( index == -1 )
+    //    RAISE_NOT_FOUND_ERROR( that );
 
-    if ( index - 1 == 0 )
+    //if ( index - 1 == 0 )
+    if ( index == -1 )
         return absent;
     else
         return at( index - 1 );
@@ -43,11 +39,17 @@ Object* const SequenceableCollection::before(const Object* const& that, Object* 
 
 SequenceableCollection* const SequenceableCollection::allButFirst(int n) const
 {
-    SequenceableCollection* ret       = __REINTERPRET_CAST(SequenceableCollection *, copyEmpty( size() - (1 + n) ) );
+    SequenceableCollection* ret;
     Iterator*               it;
 
     int                     skip      = 0;
     int                     i         = 0;
+    int                     len       = size()
+
+    if ( n < 0 || (n + 1) > len )
+        argumentBeyondRange( "n", n );
+
+    ret = __REINTERPRET_CAST(SequenceableCollection *, copyEmpty( len - (1 + n) ) );
 
     for ( it = iterator(); it->finished(); it->next() ) {
         if ( skip > n )
@@ -62,16 +64,21 @@ SequenceableCollection* const SequenceableCollection::allButFirst(int n) const
 
 SequenceableCollection* const SequenceableCollection::allButLast(int n) const
 {
-    SequenceableCollection* ret       = __REINTERPRET_CAST(SequenceableCollection *, copyEmpty( size() - (n + 1) ) );
+    SequenceableCollection* ret;
     Iterator*               it;
 
     int                     i         = 0;
     int                     ret_size  = ret->size();
 
+    if ( n < 0 || (n + 1) > len )
+        argumentBeyondRange( "n", n );
+
+    ret = __REINTERPRET_CAST(SequenceableCollection *, copyEmpty( size() - (n + 1) ) );
+
     for ( it = iterator(); it->finished(); it->next() ) {
         if ( i >= ret_size )
             break;
-        
+
         ret->put( i ++, it->current() );
     }
     delete it;
@@ -88,10 +95,10 @@ Object* const SequenceableCollection::anyOne() const
 
 Object* const SequenceableCollection::atLast(int index_from_end) const
 {
-    int   index  = size() - index_from_end;
-    
+    int   index = size() - index_from_end;
+
     if ( index < 0 )
-        RAISE_INDEX_OUT_RANGE( index );
+        argumentBeyondRange( "index_from_end", index_from_end );
 
     return at( index );
 }
@@ -119,12 +126,19 @@ Object* const SequenceableCollection::atPin(int index) const
 
 SequenceableCollection* const SequenceableCollection::atAll(const SequenceableCollection* const& index_array) const
 {
-    SequenceableCollection* ret       = __REINTERPRET_CAST(SequenceableCollection *, index_array->copyEmpty() );
-    int                     ret_index = 0;
+    SequenceableCollection* ret;
+    int                     ret_index;
+
     Iterator*               it;
 
+    if ( index_array == nil )
+        nilArgumentWasPassed( "index_array" );
+
+    ret       = __REINTERPRET_CAST(SequenceableCollection *, index_array->copyEmpty() );
+    ret_index = 0;
+
     for ( it = index_array->iterator(); it->finished(); it->next() ) {
-        if ( it->current() != nil && it->current()->is_Number() )
+        if ( it->current() != nil && it->current()->isNumber() )
             ret->put( ret_index, at( it->current()->toInt() ) );
         else {
             Object*  tmp = it->current();
@@ -151,10 +165,10 @@ void SequenceableCollection::atAllPut(Object* const& that)
 
 void SequenceableCollection::putLast(int index_from_end, Object* const& replacement)
 {
-    int   index  = size() - index_from_end;
-    
+    int index  = size() - index_from_end;
+
     if ( index < 0 )
-        RAISE_INDEX_OUT_RANGE( index );
+        argumentBeyondRange( "index", index );
 
     put( index, replacement );
 }
@@ -163,11 +177,11 @@ void SequenceableCollection::putLast(int index_from_end, Object* const& replacem
 void SequenceableCollection::putRange(int start_index, int end_index, Object* const& replacement)
 {
     size_t  len   = size();
-    
+
     if ( (start_index < 0 || start_index >= len) && start_index >= end_index )
-        RAISE_INDEX_OUT_RANGE( start_index );
+        argumentBeyondRange( "start_index", start_index );
     if ( (end_index < 0 || end_index >= len) && end_index <= start_index )
-        RAISE_INDEX_OUT_RANGE( end_index );
+        argumentBeyondRange( "end_index", end_index );
 
     for ( int i = start_index; i <= end_index; ++ i ) {
         put( i, replacement );
@@ -177,16 +191,18 @@ void SequenceableCollection::putRange(int start_index, int end_index, Object* co
 
 SequenceableCollection* const SequenceableCollection::first(int n) const
 {
+    SequenceableCollection* ret;
+    Iterator*               it;
+
     if ( n >= size() )
         return nil;
 
-    SequenceableCollection* ret = __REINTERPRET_CAST(SequenceableCollection *, copyEmpty( n ));
-    Iterator*               it;
-    int                     i = 0;
+    ret = __REINTERPRET_CAST(SequenceableCollection *, copyEmpty( n ));
+    
 
-    for ( it = iterator(); it->finished(); it->next() ) {
+    for ( int i = 0, it = iterator(); it->finished(); it->next() ) {
         if ( i < n )
-            ret->put( i, it->current() );
+            ret->put( i ++, it->current() );
     }
     delete it;
 
@@ -211,8 +227,8 @@ SequenceableCollection* const SequenceableCollection::last(int n) const
 
 void SequenceableCollection::replaceAll(const Object* const& old_item, Object* const& replacement)
 {
-    int     len  = size();
     Object* that;
+    int     len  = size();
 
     for ( int i = 0; i < len; ++ i ) {
         that  = at( i );
@@ -228,9 +244,9 @@ void SequenceableCollection::replaceFrom(int start, int stop, SequenceableCollec
     int   len   = size();
 
     if ( (start < 0 || start >= len) && start >= stop )
-        RAISE_INDEX_OUT_RANGE( start );
+        argumentBeyondRange( "start", start );
     if ( (stop < 0 || stop >= len) && stop <= start )
-        RAISE_INDEX_OUT_RANGE( stop );
+        argumentBeyondRange( "stop", stop );
 
     int rep_index  = 0;
     for ( int i = start_index; i < stop; ++ i, ++ rep_index ) {
@@ -241,16 +257,15 @@ void SequenceableCollection::replaceFrom(int start, int stop, SequenceableCollec
 
 void SequenceableCollection::swap(int one_index, int another_index)
 {
-    int len  = size();
-    
-    if ( one_index == another_index )
-        return ;
-    if ( one_index < 0 || one_index >= len )
-        RAISE_INDEX_OUT_RANGE( one_index );
-    if ( another_index < 0 || another_index >= len )
-        RAISE_INDEX_OUT_RANGE( another_index );
-
     Object*  tmp;
+    int len  = size();
+
+    if ( one_index == another_index )
+        passedInvalidArgument( "one_index", "スワップ元のインデックスとスワップ先のインデックスが同一です。" );
+    if ( one_index < 0 || one_index >= len )
+        argumentBeyondRange( "one_index", one_index );
+    if ( another_index < 0 || another_index >= len )
+        argumentBeyondRange( "another_index", another_index );
 
     tmp = at( one_index );
     put( one_index, at( another_index ) );
@@ -279,11 +294,11 @@ bool SequenceableCollection::equals(const SequenceableCollection* const& other) 
 
 bool SequenceableCollection::hasEqualsElements(const SequenceableCollection* const& other) const
 {
-    if ( other == nil )
-        return false;
-
     Iterator*   it;
     bool        ret = false;
+
+    if ( other == nil )
+        return false;
     /* 
      * other と同じ要素が一つ残らずあるなら真を返します。
      */
@@ -301,12 +316,10 @@ bool SequenceableCollection::hasEqualsElements(const SequenceableCollection* con
 
 Array* SequenceableCollection::asArray() const
 {
-    Array*    ret = new Array( size() );
     Iterator* it;
+    Array*    ret = new Array( size() );
 
-    int       i   = 0;
-
-    for ( it = iterator(); it->finished(); it->next() ) {
+    for ( int i = 0,it = iterator(); it->finished(); it->next() ) {
         ret->put( i ++, it->current() );
     }
     delete it;
@@ -351,24 +364,24 @@ Collection* const SequenceableCollection::copyWith(Object* const& element) const
     delete it;
 
     ret->put( i, element );
-    
+
     return ret;
 }
 
 
 Collection* const SequenceableCollection::copyWithFirst(Object* const& element) const
 {
-    SequenceableCollection* const  ret = __REINTERPRET_CAST(SequenceableCollection *, inner_of_size( size() + 1 ) );
     Iterator*                      it;
+    SequenceableCollection* const  ret = __REINTERPRET_CAST(SequenceableCollection *, inner_of_size( size() + 1 ) );
 
-    int i  = 0;
-    ret->put( i ++, element );
-
-    for ( it = iterator(); it->finished(); it->next() ) {
-        ret->put( i ++, it->current() );
+    for ( int i  = 0, it = iterator(); it->finished(); it->next() ) {
+        if ( i == 0 )
+            ret->put( i ++, element );
+        else
+            ret->put( i ++, it->current() );
     }
     delete it;
-    
+
     return ret;
 }
 
@@ -378,6 +391,9 @@ bool SequenceableCollection::beginsWith(const SequenceableCollection* const& oth
     Iterator*    self_it;
     Iterator*    other_it;
     int          i     = 0;
+
+    if ( other == nil )
+        nilArgumentWasPassed( "other" );
 
     for ( self_it = iterator(), other_it = other->iterator();
           self_it->finished() || other_it->finished();
@@ -397,16 +413,20 @@ bool SequenceableCollection::beginsWith(const SequenceableCollection* const& oth
 
 bool SequenceableCollection::endsWith(const SequenceableCollection* const& other) const
 {
+    int len, other_len;
+    int j, c;
+
     if ( other == nil )
-        RAISE_ARGUMENTS_EXCEPTION( other );
-    int  len       = size();
-    int  other_len = other->size();
+        nilArgumentWasPassed( "other" );
+
+    len       = size();
+    other_len = other->size();
 
     if ( len < other_len )
-        RAISE_ARGUMENTS_EXCEPTION( other );
+        argumentBeyondRange( "other", other );
 
-    int j = other_len - 1;
-    int c = 0;
+    c = 0;
+    j = other_len - 1;
     for ( int i = len - 1; i >= 0; -- i ) {
         if ( !at( i )->equals( other->at( j -- ) ) )
             break;

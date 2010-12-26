@@ -28,7 +28,7 @@ namespace canopus {
         /**
          * デフォルトでは何もしません。
          */
-        virtual void flush() {}
+        virtual void flush();
 
 
         /**
@@ -40,13 +40,47 @@ namespace canopus {
         /**
          * 現在カーソルが指しているオブジェクトを返し、カーソルを進めます。
          */
-        virtual Object* const next() const {
-            return basicNext();
-        }
+        virtual Object* const next() const;
         /**
-         * 現在のカーソルから n 個のオブジェクトを OrderedCollection オブジェクトにして返し、n 個分カーソルを進めます。
+         * 現在のカーソルから n 個のオブジェクトを OrederedCollection オブジェクトにして返し、n 個分カーソルを進めます。
          */
-        virtual OrederedCollection* const next(int n) const = 0;
+        virtual SequenceableCollection* const next(int n) const;
+        /**
+         * 
+         */
+        virtual SequenceableCollection* const next( int n,
+                                                    SequenceableCollection* const& new_sequence,
+                                                    int index ) const;
+
+
+        /**
+         * 
+         */
+        virtual Integer* const nextBigEndianLong();
+
+
+        /**
+         * 
+         */
+        virtual Integer* const nextBigEndianShort();
+
+
+        /**
+         * 
+         */
+        virtual Integer* const nextLittleEndianLong();
+
+
+        /**
+         * 
+         */
+        virtual Integer* const nextLittleEndianShort();
+
+
+        /**
+         * 
+         */
+        virtual SequenceCollection* const nextLine();
 
 
         /**

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @since 2010-10-07T00:23:30+0900
  */
 #ifndef canopus_ArrayedCollection_hxx

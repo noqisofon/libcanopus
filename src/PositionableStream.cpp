@@ -1,12 +1,13 @@
+#include <stdafx.h>
 
 
-
-PositionableStream* const PositionableStream::on(SequenceableCollection* const& collection)
+PositionableStream* const PositionableStream::on(SequenceableCollection* const& sequence)
 {
-    return on( collection, 0, collection->size() );
+    return on( sequence, 0, sequence->size() );
 }
-PositionableStream* const PositionableStream::on(SequenceableCollection* const& collection, int first_index, int last_index)
+PositionableStream* const PositionableStream::on(SequenceableCollection* const& sequence, int first_index, int last_index)
 {
+    return new PositionableStream( sequence, first_index, last_index );
 }
 
 
@@ -62,3 +63,5 @@ void PositionableStream::nextPutAll(const SequenceableCollection* const& collect
 {
 }
 void PositionableStream::nextPutAll(const SequenceableCollection* const& collection, int start_index)
+{
+}

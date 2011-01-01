@@ -1,6 +1,7 @@
 *~
 \#*#
 .DS_Store
+*.scan
 *.bat
 *.sh
 *.rb
@@ -44,5 +45,5 @@
 *.unsuccessfulbuild
 *.ver
 *.version
-*.cmes
+*.mes
 *.opensdf

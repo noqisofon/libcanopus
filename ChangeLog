@@ -1,0 +1,57 @@
+commit 5d8638a356f6f054f2a0bfb1595dbaf8c4badf90
+Author: rihine <ned.rihine@gmail.com>
+Date:   Sat Jan 1 16:53:45 2011 +0900
+
+    * ã¨ã‚Šã‚ãˆãšã€Win32 ã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚
+    
+    + auto* ã§ãã‚‹ã‚ˆã†ã«ã—ã‚ˆã†ã¨æ€ã„ã¾ã—ãŸã€‚
+
+commit 4d2877b947d90fe4661dd974f6728ed72f3c57e8
+Author: rihine <ned.rihine@gmail.com>
+Date:   Sat Dec 25 17:16:53 2010 +0900
+
+    * FX‚Æ’Ç‰Á‚µ‚½‚è‚µ‚Ü‚µ‚½B
+
+commit 787af26467bb31202d4a70375196892c02c67b43
+Author: rihine <ned.rihine@gmail.com>
+Date:   Sun Nov 14 16:12:37 2010 +0900
+
+    ï»¿* Identifier.cpp ã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚
+
+commit dd7a07e6632d7fdbfb58636b69a8d4b4887c765b
+Author: rihine <ned.rihine@gmail.com>
+Date:   Thu Nov 11 20:28:31 2010 +0900
+
+    * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚
+
+commit aadb1775a82c938936d4433d76438d6b4eb2444e
+Author: rihine <ned.rihine@gmail.com>
+Date:   Fri Oct 15 01:08:25 2010 +0900
+
+    ã„ã‚ã„ã‚è¿½åŠ ã—ã¾ã—ãŸã€‚
+
+commit 343310d3c2fdbc44cf070330e894e98278ae7f58
+Author: rihine <ned.rihine@gmail.com>
+Date:   Sat Oct 9 00:30:54 2010 +0900
+
+    updated .gitignore
+
+commit 44edf0197596f9251a765d317d1fa58d3eac2bf3
+Author: rihine <ned.rihine@gmail.com>
+Date:   Fri Oct 8 23:49:51 2010 +0900
+
+    * ƒvƒƒWƒFƒNƒg–¼‚ğ qwine ‚©‚ç canopus ‚É•ÏX‚µ‚Ü‚µ‚½B
+    
+    + •¶šƒGƒ“ƒR[ƒh‚ğ utf-8n lf ‚©‚ç utf-8 crlf ‚É•ÏX‚µ‚Ü‚µ‚½B
+
+commit 5e1f126a0cb0b1a942c668373455e732ae901d5a
+Author: rihine <ned.rihine@gmail.com>
+Date:   Sat Oct 2 23:08:55 2010 +0900
+
+    little fix.
+
+commit 8d5ebae33b3a222e175e29c34a175faed24091b2
+Author: rihine <ned.rihine@gmail.com>
+Date:   Mon Sep 20 07:02:10 2010 +0900
+
+    first commit.

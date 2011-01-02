@@ -46,7 +46,7 @@ namespace canopus {
         /**
          * 現在のカーソルから n 個のオブジェクトを OrderedCollection オブジェクトにして返し、n 個分カーソルを進めます。
          */
-        virtual OrederedCollection* const next(int n) const = 0;
+        virtual SequenceableCollection* const next(int n) const = 0;
 
 
         /**

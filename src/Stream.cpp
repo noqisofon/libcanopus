@@ -18,7 +18,7 @@ void Stream::nextPutAll(const SequenceableCollection* const& collection)
     Iterator*   it;
 
     if ( collection == nil )
-        nilArgumentWasPassed( "collection", "Žw’è‚³‚ê‚½ƒRƒŒƒNƒVƒ‡ƒ“‚ª–³Œø‚Å‚·B" );
+        nilArgumentWasPassed( "collection", "æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãŒç„¡åŠ¹ã§ã™ã€‚" );
 
     for ( it = collection->iterator(); it->finished(); it->next() ) {
         nextPut( it->current() );
@@ -30,7 +30,7 @@ void nextPutAll(const SequenceableCollection* const& collection, int start_index
     Iterator*   it;
     
     if ( collection == nil )
-        nilArgumentWasPassed( "collection", "Žw’è‚³‚ê‚½ƒRƒŒƒNƒVƒ‡ƒ“‚ª–³Œø‚Å‚·B" );
+        nilArgumentWasPassed( "collection", "æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãŒç„¡åŠ¹ã§ã™ã€‚" );
 
     if ( collection->size() > start_index )
         argumentBeyondRange( "start_index", start_index );

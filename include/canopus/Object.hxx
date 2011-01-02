@@ -1,4 +1,4 @@
-﻿#ifndef canopus_Object_hxx
+#ifndef canopus_Object_hxx
 #define canopus_Object_hxx
 
 
